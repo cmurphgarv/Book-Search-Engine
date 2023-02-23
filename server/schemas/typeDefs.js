@@ -26,7 +26,7 @@ input savedBooksInput {
     description: String!
     title: String!
     bookId: String!
-    image: string!
+    image: String!
     link: String!
 }
 
@@ -47,3 +47,4 @@ type Mutation {
     removeBook(bookId:String):User
 }
 `
+module.exports = typeDefs;

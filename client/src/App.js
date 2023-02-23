@@ -1,9 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Nav } from 'react-bootstrap';
 
 
@@ -16,12 +21,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-      <Navbar />
-        <Routes>
-            <Route exact path='/' component={SearchBooks} />
-            <Route exact path='/saved' component={SavedBooks} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-          </Routes>
+        <Navbar />
+
+        <Route exact path='/' component={SearchBooks} />
+        <Route exact path='/saved' component={SavedBooks} />
+        <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
       </Router>
     </ApolloProvider>
   );
